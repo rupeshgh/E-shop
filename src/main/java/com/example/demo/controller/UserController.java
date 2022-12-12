@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 
 //@RestController
@@ -57,7 +58,7 @@ public class UserController {
 
             System.out.println("invalid user");
 
-            return "error";
+            return "redirect:/error.html";
 
         }
 
@@ -65,6 +66,14 @@ public class UserController {
 
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+
+        HttpSession session=request.getSession();
+        session.invalidate();
+
+        return "redirect:/index.html";
+    }
 
 
 }

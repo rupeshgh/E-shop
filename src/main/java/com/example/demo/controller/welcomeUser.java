@@ -12,16 +12,18 @@ public class welcomeUser {
 
     boolean checkSession(HttpServletRequest request){
         HttpSession session=request.getSession();
-
+//        System.out.println("session check");
         if (session.getAttribute("id")==null) {
+            System.out.println("sesion id"+session.getAttribute("id"));
             return false;
         }
+        System.out.println("sesion id"+session.getAttribute("id"));
         return true;
     }
 
     @GetMapping("/user/welcome")
         public String returnView(HttpServletRequest request, Model model) {
-        System.out.println("welcome user controller "+model.getAttribute("id"));
+//        System.out.println("welcome user controller "+model.getAttribute("id"));
 
         if (checkSession(request)) {
             return "welcomeUser";

@@ -79,7 +79,7 @@ public class UserService {
             User createdUser = userRepository.save(newUser);
 
             if (createdUser != null) {
-                return "index";
+                return "redirect:/login.html";
             } else {
                 return "error";
             }
